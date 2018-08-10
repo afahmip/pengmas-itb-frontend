@@ -3,7 +3,8 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import './css/map.css';
+import api_url from 'configs/config';
+import 'css/map.css';
 
 class Map extends Component {
     constructor(props) {
@@ -355,7 +356,7 @@ class Map extends Component {
     }
 
     getMarker = () => {
-        axios.get('http://localhost:5000/api/Activity').then(res => {
+        axios.get(api_url + '/api/Activity').then(res => {
             this.initMap(res.data.data);
         });
     }
@@ -452,12 +453,11 @@ class Map extends Component {
 
         var lembagaName;
         $.ajax({
-            url: 'http://localhost:5000/api/Lembaga/' + data.lembaga_id,
+            url: api_url+ '/api/Lembaga/' + data.lembaga_id,
             type: 'GET',
             async: false,
             success: function(result){
                 lembagaName = result.name;
-                console.log('/api/Lembaga/' + data.lembaga_id);
             },
             error: function(result){
                 console.log(result);

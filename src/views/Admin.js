@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
-import './css/admin.css';
-import Navigation from '../components/admin/Navigation';
-import Dashboard from '../components/admin/Dashboard';
-import Database from '../components/admin/Database';
-import Lembaga from '../components/admin/Lembaga';
+import 'css/admin.css';
+import Navigation from 'components/admin/Navigation';
+import Dashboard from 'components/admin/Dashboard';
+import Database from 'components/admin/Database';
+import Lembaga from 'components/admin/Lembaga';
 
 class Admin extends Component {
     constructor(props) {

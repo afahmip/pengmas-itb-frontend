@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row, PageHeader, Panel, Tabs, Tab } from 'react-bootstrap';
 import DatabaseForm from './DatabaseForm';
+import api_url from 'configs/config';
 
 class Database extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Database extends Component {
     getData = () => {
         $.ajax({
             type        : 'GET',
-            url         : 'http://localhost:5000/api/Activity',
+            url         : api_url + '/api/Activity',
             success     : (result) => {
                 console.log(result.data);
                 this.createTable(result.data);

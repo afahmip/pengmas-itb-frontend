@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row, PageHeader, Panel, Tabs, Tab } from 'react-bootstrap';
 import LembagaForm from './LembagaForm';
+import api_url from 'configs/config';
 
 class Lembaga extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Lembaga extends Component {
     getData = () => {
         $.ajax({
             type        : 'GET',
-            url         : 'http://localhost:5000/api/Activity',
+            url         : api_url + '/api/Lembaga',
             success     : (result) => {
                 this.createTable(result.data);
             },
@@ -31,10 +32,11 @@ class Lembaga extends Component {
     createTable = data => {
         let placeholder = document.getElementById('admin-database__table');
         let table = document.createElement('table');
-        let headers = ['lembaga_name', 'name'];
+        let headers = ['name', 'penanggung_jawab', 'email'];
         let headerName = {
-            'lembaga_name'  : 'Nama Lembaga',
-            'name'          : 'Nama Kegiatan'
+            'name'              : 'Nama Himpunan',
+            'penanggung_jawab'  : 'Penanggung Jawab',
+            'email'             : 'Email'
         }
 
         /* Helper function */
@@ -60,9 +62,11 @@ class Lembaga extends Component {
         for(var i=0; i<data.length; i++) {
             tr = document.createElement('tr');
             let td = document.createElement('td');
-            append(tr, td, data[i]['lembaga_id']);
-            td = document.createElement('td');
             append(tr, td, data[i]['name']);
+            td = document.createElement('td');
+            append(tr, td, data[i]['penanggung_jawab']);
+            td = document.createElement('td');
+            append(tr, td, data[i]['email']);
             tbody.appendChild(tr);
         }
         table.appendChild(tbody);

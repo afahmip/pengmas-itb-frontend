@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import api_url from 'configs/config';
 
 class DatabaseForm extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class DatabaseForm extends Component {
 
         $.ajax({
             type        : 'GET',
-            url         : 'http://localhost:5000/api/Lembaga',
+            url         : api_url + '/api/Lembaga',
             success     : function(result) {
                 createOption(result.data);
             },
@@ -422,7 +423,7 @@ class DatabaseForm extends Component {
 
         $.ajax({
             type        : 'POST',
-            url         : 'http://localhost:5000/api/Activity',
+            url         : api_url + '/api/Activity',
             data        : JSON.stringify(data),
             contentType : 'application/json; charset=utf-8',
             success     : function(result) {

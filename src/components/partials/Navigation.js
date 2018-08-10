@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import './css/navigation.css';
+import 'css/navigation-main.css';
 
 class Navigation extends Component {
     constructor(props, context) {
@@ -31,9 +31,9 @@ class Navigation extends Component {
                         <NavItem eventKey={1} href="/">
                             Beranda
                         </NavItem>
-                        <NavItem eventKey={2} href="#">
+                        {/* <NavItem eventKey={2} href="#">
                             Berita
-                        </NavItem>
+                        </NavItem> */}
                         <NavDropdown eventKey={3} title="Profil" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Community Development & Community Service</MenuItem>
                             <MenuItem eventKey={3.2} href='/kkn'>KKN Tematik</MenuItem>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Main from './views/Main';
-import Admin from './views/Admin';
-import './App.css';
+import Main from 'views/Main';
+import Admin from 'views/Admin';
+import 'css/App.css';
 
 class App extends Component {
 render() {
