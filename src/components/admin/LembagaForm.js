@@ -1,38 +1,22 @@
 /* global $ */
 
-import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import api_url from 'configs/config';
+import React, { Component } from 'react'
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
+import api_url from 'configs/config'
 
 class LembagaForm extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            name    : '',
-            lembaga : '',
-            lat     : '',
-            lng     : '',
-            marker  : '',
-        }
-    }
-
-    postNewActivity = () => {
-        this.setState({
-            name    : $('input[name=name]').val(),
-            lembaga : $('#database__form-select :selected').text()
-        });
-
+    postNewLembaga = () => {
         let data = {
-            "name"              : $('input[name=name]').val(),
-            "category"          : $('#lembaga__form-select :selected').text(),
-            "id_line"           : $('input[name=line]').val(),
-            "instagram"         : $('input[name=insta]').val(),
-            "web"               : $('input[name=web]').val(),
-            "youtube"           : $('input[name=youtube]').val(),
-            "penanggung_jawab"  : $('input[name=pj]').val(),
-            "nomor_hp"          : $('input[name=hppj]').val(),
-            "email"             : $('input[name=email]').val(),
+            "name"              : document.querySelector('input[name=name]').value,
+            "category"          : document.querySelector('#lembaga__form-select').value,
+            "id_line"           : document.querySelector('input[name=line]').value,
+            "instagram"         : document.querySelector('input[name=insta]').value,
+            "web"               : document.querySelector('input[name=web]').value,
+            "youtube"           : document.querySelector('input[name=youtube]').value,
+            "penanggung_jawab"  : document.querySelector('input[name=pj]').value,
+            "nomor_hp"          : document.querySelector('input[name=hppj]').value,
+            "email"             : document.querySelector('input[name=email]').value,
         }
 
         $.ajax({
@@ -41,12 +25,26 @@ class LembagaForm extends Component {
             data        : JSON.stringify(data),
             contentType : 'application/json; charset=utf-8',
             success     : function(result) {
-                console.log(result);
+                alert('Data berhasil ditambahkan')
+                window.location.reload()
             },
             error       : function(result) {
                 console.log(result);
             }
-        });
+        })
+
+        this.setFormEmpty()
+    }
+
+    setFormEmpty = () => {
+        document.querySelector('input[name=name]').value = ''
+        document.querySelector('input[name=line]').value = ''
+        document.querySelector('input[name=insta]').value = ''
+        document.querySelector('input[name=web]').value = ''
+        document.querySelector('input[name=youtube]').value = ''
+        document.querySelector('input[name=pj]').value = ''
+        document.querySelector('input[name=hppj]').value = ''
+        document.querySelector('input[name=email]').value = ''
     }
 
     render() {
@@ -63,7 +61,7 @@ class LembagaForm extends Component {
                 </FormGroup>
                 <FormGroup>
                     <ControlLabel>Kategori</ControlLabel>
-                    <FormControl componentClass='select' id='lembaga__form-select'>
+                    <FormControl componentClass='select' id='lembaga__form-select' name='tipe'>
                         <option value='1'>Unit</option>
                         <option value='2'>Himpunan</option>
                         <option value='3'>Lainnya</option>
@@ -97,10 +95,10 @@ class LembagaForm extends Component {
                     <ControlLabel>Youtube</ControlLabel>
                     <FormControl type='text' placeholder='Masukkan akun Youtube lembaga' name='youtube'/>
                 </FormGroup>
-                <Button onClick={this.postNewActivity} bsStyle='success' style={btnStyle}>Tambah Lembaga</Button>
+                <Button onClick={this.postNewLembaga} bsStyle='success' style={btnStyle}>Tambah Lembaga</Button>
             </form>
         );
     }
 }
 
-export default LembagaForm;
+export default LembagaForm

@@ -27,7 +27,7 @@
         height: 500px;
     }
 
-    #map-panel-title {
+    #map-panel__title {
         display: none;
     }
 }

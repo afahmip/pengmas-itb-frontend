@@ -108,4 +108,5 @@ class Lembaga extends Component {
         );
     }
 }
+
 export default Lembaga;

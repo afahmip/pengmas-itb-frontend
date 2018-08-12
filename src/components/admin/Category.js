@@ -2,10 +2,10 @@
 
 import React, { Component } from 'react';
 import { Grid, Col, Row, PageHeader, Panel, Tabs, Tab } from 'react-bootstrap';
-import DatabaseForm from './DatabaseForm';
+import CategoryForm from './CategoryForm';
 import api_url from 'configs/config';
 
-class Database extends Component {
+class Category extends Component {
     constructor(props) {
         super(props);
 
@@ -19,9 +19,8 @@ class Database extends Component {
     getData = () => {
         $.ajax({
             type        : 'GET',
-            url         : api_url + '/api/Activity',
+            url         : api_url + '/api/Category',
             success     : (result) => {
-                console.log(result.data);
                 this.createTable(result.data);
             },
             error       : function(result) {
@@ -33,11 +32,9 @@ class Database extends Component {
     createTable = data => {
         let placeholder = document.getElementById('admin-database__table');
         let table = document.createElement('table');
-        let headers = ['lembaga_name', 'name', 'description'];
+        let headers = ['name'];
         let headerName = {
-            'lembaga_name'  : 'Nama Lembaga',
-            'name'          : 'Nama Kegiatan',
-            'description'   : 'Deskripsi'
+            'name'              : 'Nama Kategori'
         }
 
         /* Helper function */
@@ -63,11 +60,7 @@ class Database extends Component {
         for(var i=0; i<data.length; i++) {
             tr = document.createElement('tr');
             let td = document.createElement('td');
-            append(tr, td, data[i]['lembaga_name']);
-            td = document.createElement('td');
             append(tr, td, data[i]['name']);
-            td = document.createElement('td');
-            append(tr, td, data[i]['description']);
             tbody.appendChild(tr);
         }
         table.appendChild(tbody);
@@ -84,22 +77,22 @@ class Database extends Component {
             <Row>
                 <Col lg={12}>
                     <PageHeader>
-                        Database Kegiatan
+                        Database Jenis Kegiatan
                     </PageHeader>
                 </Col>
                 <Col lg={12}>
-                    <Tabs defaultActiveKey={1}>
-                        <Tab eventKey={1} title='Daftar Kegiatan'>
+                    <Tabs defaultActiveKey={2}>
+                        <Tab eventKey={1} title='Daftar Jenis Kegiatan'>
                             <Panel>
                                 <Panel.Body>
                                     <div id='admin-database__table'/>
                                 </Panel.Body>
                             </Panel>
                         </Tab>
-                        <Tab eventKey={2} title='Tambah Kegiatan'>
+                        <Tab eventKey={2} title='Tambah Kategori'>
                             <Panel>
                                 <Panel.Body>
-                                    <DatabaseForm/>
+                                    <CategoryForm/>
                                 </Panel.Body>
                             </Panel>
                         </Tab>
@@ -109,4 +102,5 @@ class Database extends Component {
         );
     }
 }
-export default Database;
+
+export default Category
