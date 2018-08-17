@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
-import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
+import { Grid } from 'react-bootstrap';
 import 'css/admin.css';
 import Navigation from 'components/admin/Navigation';
 import Dashboard from 'components/admin/Dashboard';

@@ -1,7 +1,7 @@
 /* global $ */
 
 import React, { Component } from 'react';
-import { Grid, Col, Row, PageHeader, Panel, Tabs, Tab } from 'react-bootstrap';
+import { Col, Row, PageHeader, Panel, Tabs, Tab } from 'react-bootstrap';
 import DatabaseForm from './DatabaseForm';
 import api_url from 'configs/config';
 
@@ -51,10 +51,10 @@ class Database extends Component {
         table.className = 'table table-striped table-bordered table-condensed table-hover';
         let thead = document.createElement('thead');
         let tr = document.createElement('tr');
-        for(var i=0; i<headers.length; i++) {
+        headers.forEach(elem => {
             let th = document.createElement('th');
-            append(tr, th, getHeaderName(headers[i]));
-        }
+            append(tr, th, getHeaderName(elem)); 
+        });
         thead.appendChild(tr);
         table.appendChild(thead);
 

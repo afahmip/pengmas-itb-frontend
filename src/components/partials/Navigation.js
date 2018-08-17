@@ -35,13 +35,10 @@ class Navigation extends Component {
                             Berita
                         </NavItem> */}
                         <NavDropdown eventKey={3} title="Profil" id="basic-nav-dropdown">
-                            <MenuItem eventKey={3.1}>Community Development & Community Service</MenuItem>
+                            <MenuItem eventKey={3.1} href="/database">Community Development & Community Service</MenuItem>
                             <MenuItem eventKey={3.2} href='/kkn'>KKN Tematik</MenuItem>
                         </NavDropdown>
-                        <NavItem eventKey={4} href="/database">
-                            Database
-                        </NavItem>
-                        <NavItem eventKey={5} href="https://kemahasiswaan.itb.ac.id/kontak" target="blank_">
+                        <NavItem eventKey={4} href="https://kemahasiswaan.itb.ac.id/kontak" target="blank_">
                             Kontak
                         </NavItem>
                     </Nav>
