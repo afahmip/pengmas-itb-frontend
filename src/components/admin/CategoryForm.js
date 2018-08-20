@@ -8,7 +8,7 @@ class CategoryForm extends Component {
 
     postNewCategory = () => {
         let data = {
-            "name"              : document.querySelector('input[name=name]').value
+            "name"  : document.querySelector('input[name=name]').value
         }
 
         $.ajax({
